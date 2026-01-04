@@ -51,6 +51,7 @@ eval $(ssh-agent)
 ssh-add ~/.ssh/id_rsa
 
 
+echo "StrictHostKeyChecking no" >> $(find /etc -iname ssh_config)
 #echo "Add known hosts"
 #ssh-keyscan -p $INPUT_SSH_PORT "$SSH_HOST" >> ~/.ssh/known_hosts
 # set context
