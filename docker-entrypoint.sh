@@ -61,10 +61,10 @@ ssh-add ~/.ssh/id_rsa
 
 if  [ -n "$INPUT_DOCKER_LOGIN_PASSWORD" ] || [ -n "$INPUT_DOCKER_LOGIN_USER" ] || [ -n "$INPUT_DOCKER_LOGIN_REGISTRY" ]; then
   echo "Connecting to $INPUT_REMOTE_DOCKER_HOST... Command: docker login"
-  docker login -u "$INPUT_DOCKER_LOGIN_USER" -p "$INPUT_DOCKER_LOGIN_PASSWORD" "$INPUT_DOCKER_LOGIN_REGISTRY"
+  execute_ssh docker login -u "$INPUT_DOCKER_LOGIN_USER" -p "$INPUT_DOCKER_LOGIN_PASSWORD" "$INPUT_DOCKER_LOGIN_REGISTRY"
 fi
 
 echo "Command: ${DEPLOYMENT_COMMAND} ${INPUT_ARGS}"
-${DEPLOYMENT_COMMAND} ${INPUT_ARGS}
+execute_ssh ${DEPLOYMENT_COMMAND} ${INPUT_ARGS}
 
 
