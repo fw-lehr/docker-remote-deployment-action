@@ -50,8 +50,8 @@ eval $(ssh-agent)
 ssh-add ~/.ssh/id_rsa
 
 
-echo "Add known hosts"
-ssh-keyscan -p $INPUT_SSH_PORT "$SSH_HOST" >> ~/.ssh/known_hosts
+#echo "Add known hosts"
+#ssh-keyscan -p $INPUT_SSH_PORT "$SSH_HOST" >> ~/.ssh/known_hosts
 DOCKER_HOST="ssh://$INPUT_REMOTE_DOCKER_HOST:$INPUT_SSH_PORT"
 # set context
 # echo "Create docker context"
