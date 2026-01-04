@@ -5,9 +5,6 @@ inputs:
   remote_docker_host:
     description: Remote Docker host ie (user@host)
     required: true
-  ssh_public_key:
-    description: Remote Docker SSH public key
-    required: true
   ssh_private_key:
     description: SSH private key used to connect to the docker host
     required: true

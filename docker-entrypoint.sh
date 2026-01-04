@@ -13,11 +13,6 @@ if [ -z "$INPUT_REMOTE_DOCKER_HOST" ]; then
     exit 1
 fi
 
-if [ -z "$INPUT_SSH_PUBLIC_KEY" ]; then
-    echo "Input ssh_public_key is required!"
-    exit 1
-fi
-
 if [ -z "$INPUT_SSH_PRIVATE_KEY" ]; then
     echo "Input ssh_private_key is required!"
     exit 1
@@ -51,9 +46,6 @@ mkdir -p ~/.ssh
 ls ~/.ssh
 printf '%s\n' "$INPUT_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
-printf '%s\n' "$INPUT_SSH_PUBLIC_KEY" > ~/.ssh/id_rsa.pub
-chmod 600 ~/.ssh/id_rsa.pub
-#chmod 600 "~/.ssh"
 eval $(ssh-agent)
 ssh-add ~/.ssh/id_rsa
 
