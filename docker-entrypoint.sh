@@ -33,6 +33,7 @@ fi
 
 STACK_FILE=${INPUT_STACK_FILE_NAME}
 DOCKER_HOST="ssh://$INPUT_REMOTE_DOCKER_HOST:$INPUT_SSH_PORT"
+echo $DOCKER_HOST
 
 DEPLOYMENT_COMMAND="docker compose -f $STACK_FILE"
 
@@ -52,7 +53,6 @@ ssh-add ~/.ssh/id_rsa
 
 #echo "Add known hosts"
 #ssh-keyscan -p $INPUT_SSH_PORT "$SSH_HOST" >> ~/.ssh/known_hosts
-DOCKER_HOST="ssh://$INPUT_REMOTE_DOCKER_HOST:$INPUT_SSH_PORT"
 # set context
 # echo "Create docker context"
 # docker context create staging --docker "host=ssh://$INPUT_REMOTE_DOCKER_HOST:$INPUT_SSH_PORT" || echo "Context staging already exists"
@@ -64,7 +64,7 @@ if  [ -n "$INPUT_DOCKER_LOGIN_PASSWORD" ] || [ -n "$INPUT_DOCKER_LOGIN_USER" ] |
   docker login -u "$INPUT_DOCKER_LOGIN_USER" -p "$INPUT_DOCKER_LOGIN_PASSWORD" "$INPUT_DOCKER_LOGIN_REGISTRY"
 fi
 
-echo "Command: ${DEPLOYMENT_COMMAND} -H $DOCKER_HOST${INPUT_ARGS}"
-${DEPLOYMENT_COMMAND} -H $DOCKER_HOST ${INPUT_ARGS}
+echo "Command: ${DEPLOYMENT_COMMAND} ${INPUT_ARGS}"
+${DEPLOYMENT_COMMAND} ${INPUT_ARGS}
 
 
