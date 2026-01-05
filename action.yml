@@ -1,6 +1,6 @@
 name: Docker-Compose Remote Deployment
-author: Wernich Bekker<wernich.bekker+dev@gmail.com>, Alexander Raschke
-description: A GitHub Action that supports docker-compose on remote hosts
+author: Alexander Raschke
+description: A GitHub Action that supports docker commands on remote hosts via DOCKER_HOST
 inputs:
   remote_docker_host:
     description: Remote Docker host ie (user@host)
@@ -8,11 +8,8 @@ inputs:
   ssh_private_key:
     description: SSH private key used to connect to the docker host
     required: true
-  args:
-    description: Deployment command args.
-    required: true
-  stack_file_name:
-    description: Docker stack file used. Default is docker-compose.yaml
+  docker_command:
+    description: Docker command. Default is "docker compose -f docker-compose.yml"
     required: false
   ssh_port:
     description: The ssh port of the server. Default is 22
