@@ -9,7 +9,7 @@ inputs:
     description: SSH private key used to connect to the docker host
     required: true
   docker_command:
-    description: Docker command. Default is "docker compose -f docker-compose.yml"
+    description: Docker command. Default is "docker compose -f docker-compose.yml up -d"
     required: false
   ssh_port:
     description: The ssh port of the server. Default is 22

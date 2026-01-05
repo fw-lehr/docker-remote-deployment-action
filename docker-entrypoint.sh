@@ -12,7 +12,7 @@ if [ -z "$INPUT_SSH_PRIVATE_KEY" ]; then
 fi
 
 if [ -z "$INPUT_DOCKER_COMMAND" ]; then
-  INPUT_DOCKER_COMMAND="docker compose -f docker-compose.yml"
+  INPUT_DOCKER_COMMAND="docker compose -f docker-compose.yml up -d"
 fi
 
 if [ -z "$INPUT_SSH_PORT" ]; then
