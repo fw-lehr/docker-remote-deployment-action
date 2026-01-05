@@ -35,8 +35,16 @@ chmod 600 ~/.ssh/id_rsa
 eval $(ssh-agent)
 ssh-add ~/.ssh/id_rsa
 
+#echo "Add known hosts"
+#ssh-keyscan -p $INPUT_SSH_PORT "$SSH_HOST" >> ~/.ssh/known_hosts
+#ssh-keyscan -p $INPUT_SSH_PORT "$SSH_HOST" >> /etc/ssh/ssh_known_hosts
+# set context
+#echo "Create docker context"
+#docker context create staging --docker "host=ssh://$INPUT_REMOTE_DOCKER_HOST:$INPUT_SSH_PORT"
+#docker context use staging
 
 # disable host key checking
+echo "Disable host key checking via ssh_config"
 echo "StrictHostKeyChecking no" >> $(find /etc -iname ssh_config)
 
 if  [ -n "$INPUT_DOCKER_LOGIN_PASSWORD" ] || [ -n "$INPUT_DOCKER_LOGIN_USER" ] || [ -n "$INPUT_DOCKER_LOGIN_REGISTRY" ]; then
